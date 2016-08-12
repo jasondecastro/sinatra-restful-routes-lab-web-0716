@@ -1,0 +1,6 @@
+<strong>Name:</strong> <%= @recipe.name %><br />
+<strong>Ingredients:</strong> <%= @recipe.ingredients %><br />
+<strong>Duration:</strong> <%= @recipe.cook_time %><br /><br />
+<a href="/recipes/new">create a new recipe?</a><br />
+
+<a href="/recipes/<%= @recipe.id %>/delete">delete this recipe?</a>

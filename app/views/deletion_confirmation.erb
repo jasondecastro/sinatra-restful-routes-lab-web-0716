@@ -1,0 +1,9 @@
+are you sure you want to delete recipe <strong><%= @recipe.id %></strong>?
+
+<form method="post" action="/recipes/<%= @recipe.id %>/delete">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="delete">
+</form>
+
+
+<a href="/recipes/<%= @recipe.id %>">go back</a>

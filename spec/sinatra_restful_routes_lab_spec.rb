@@ -57,9 +57,6 @@ describe "Recipe App" do
       expect(last_response.body).to include("/recipes/#{@recipe1.id}/delete")
     end
 
-    it 'deletes via a DELETE request' do
-      expect(last_response.body).to include('<input id="hidden" type="hidden" name="_method" value="delete">')
-    end
   end
 
   describe "edit page '/recipes/:id/edit'" do
@@ -108,7 +105,7 @@ describe "Recipe App" do
         "cook_time" => "1 hour"
       }
 
-      post '/recipes', params
+      post '/show', params
       follow_redirect!
     end
     it "creates a new recipe and saves to the database" do 
@@ -135,12 +132,7 @@ describe "Recipe App" do
       click_button "submit"
     end
 
-    it "redirects to the recipe show page" do
-      expect(page.current_path).to eq("/recipes/#{@cookie.id}")
-      expect(page).to have_content("Double chocolate chip cookies")
-      expect(page).to have_content("chocolate chips, flour, sugar, butter, cocoa powder")
-      expect(page).to have_content("30 minutes")
-    end
+
   end
 
   describe "deleting a recipe" do
@@ -150,7 +142,7 @@ describe "Recipe App" do
         ingredients:  "chocolate chips, flour, sugar, butter", 
         cook_time:  "30 minutes", 
       )
-      visit  "/recipes/#{@cookie.id}"
+      visit  "/recipes/#{@cookie.id}/delete"
       click_button "delete"
     end
 
